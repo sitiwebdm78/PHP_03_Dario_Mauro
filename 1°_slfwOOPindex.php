@@ -91,13 +91,6 @@ $compagnia6 = new Azienda ('Vanhool', 'Danimarca', 7500);
 
 Azienda::stampatotaleFinale();
 
-//$compagnia1->stampaCostiannuali();
-
-
-/* 
-$compagnia2 = new Azienda('Aulab')
- */
-
 
 
 
