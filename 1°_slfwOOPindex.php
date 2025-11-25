@@ -3,93 +3,93 @@
 
 /* Selfwork PHP OOP 1 - MODULO 8 LEZIONE OBJECT ORIENTED PROGTAMMING 
 Crea una classe Company che abbia i seguenti attributi pubblici:
-name: nome dell’azienda;
+name: name dell’azienda;
 location: stato in cui e' ubicata la sede dell’azienda;
-tot_employees: numero di dipedenti$dipendenti in quella sede (di default, 0);
+tot_employees: number di dipedenti$dipendenti in quella sede (di default, 0);
 Crea 5 istanze di 5 aziende diverse
-Crea un metodo che permetta di stampare a terminale la seguente frase: “L’ufficio Aulab con sede in Italia ha ben 50 dipendenti“; se la sede non ha dipendendi, allora stampa: “L’ufficio Aulab con sede in Italia non ha dipendenti“;
+Crea un metodo che permetta di printre a terminale la seguente frase: “L’ufficio Aulab con sede in Italia ha ben 50 dipendenti“; se la sede non ha dipendendi, allora print: “L’ufficio Aulab con sede in Italia non ha dipendenti“;
 Implementa un nuovo metodo che, per ogni oggetto Company istanziati, calcoli la spesa annuale e la stampi per ogni oggetto.
 Implementa un nuovo metodo che e' in grado di calcolare l’insieme totale delle spese di tutte le aziende create.
-Implementa un metodo statico che permetta di stampare a terminale questo totale assoluto di tutte le aziende messe insieme. 
+Implementa un metodo statico che permetta di printre a terminale questo totale assoluto di tutte le aziende messe insieme. 
  */
 
                 /* ------- CREAZIONE DELLA CLASSE "Azienda" ------- */
     
-        class Azienda{
-            public $nome;
-            public $località;
-            public $tot_occupati;
-            public static $med_salari = 1500;
-            public static $totale = 0;
+        class Company{
+            public $name;
+            public $location;
+            public $tot_employees;
+            public static $average_wages = 1500;
+            public static $total = 0;
 //Valorizzazione degli attibuti --> "--construct"
-            public function __construct($azienda, $nazione, $dipendenti){
-            $this->nome = $azienda;
-            $this->località = $nazione;
-            $this->tot_occupati = $dipendenti;
+            public function __construct($company, $country, $employe){
+            $this->name = $company;
+            $this->location = $country;
+            $this->tot_employees = $employe;
 
         }
 
-//Creazione Metodo Differrenza Occupati
-        public function contrllOccupati($occ1, $occ2){
-            if($occ1 > $occ2){
+//Creazione Metodo Differrenza employees
+        public function controlemployees($int1, $int2){
+            if($int1 > $int2){
                 return true;
             }
             return false;
         }
 //Funzione
-        public function stampaDipendenti($numero = 0){
-            if($this->contrllOccupati($this->tot_occupati, $numero)){
-                    echo "L'ufficio $this->nome con sede in $this->località ha ben $this->tot_occupati dipendenti. \n";
+        public function printEmployees($number = 0){
+            if($this->controlemployees($this->tot_employees, $number)){
+                    echo "L'ufficio $this->name con sede in $this->location ha ben $this->tot_employees dipendenti. \n";
             }else{
-                echo "L'ufficio $this->nome con sede in $this->località non ha dipendenti \n";
+                echo "L'ufficio $this->name con sede in $this->location non ha dipendenti \n";
             }
         }
-        public function costiAnnuali($int){
-            return $this->tot_occupati * (self::$med_salari * $int);
+        public function annualCosts($int){
+            return $this->tot_employees * (self::$average_wages * $int);
         }
 
-        public function stampaCostiannuali($mesi = 12){
-            echo " ******* $this->nome ******* \n "; 
-            echo "Il costo annuale dell'Ufficio $this->nome è di: " . $this->costiAnnuali($mesi) . " Euro.";
+        public function printannualCosts($month = 12){
+            echo " ******* $this->name ******* \n "; 
+            echo "Il costo annuale dell'Ufficio $this->name è di: " . $this->annualCosts($month) . " Euro.";
         }
 
-        public function costiProgressivi($mesi = 12){
-            return self::$totale += $this->costiAnnuali($mesi);
+        public function progressiveCosts($month = 12){
+            return self::$total += $this->annualCosts($month);
         }
         
-        public static function stampatotaleFinale (){
-            echo "La spesa totale finale che comprende tutte le compagnie è di: " . self::$totale .  " Euro. \n";
+        public static function printFinaltotal (){
+            echo "La spesa total finale che comprende tutte le compagnie è di: " . self::$total .  " Euro. \n";
             }
         
     }
 
 // Instanziamo 5 Oggetti.
 
-$compagnia1 = new Azienda('Direzione Aulab', 'Italia', 50);
-    $compagnia1->stampaDipendenti();
-    $compagnia1->costiProgressivi();
+$company1 = new Company('Direzione Aulab', 'Italia', 50);
+    $company1->printEmployees();
+    $company1->progressiveCosts();
 
-$compagnia2 = new Azienda ('Aulab Startup', 'Inghilterra', 0);
-    $compagnia2->stampaDipendenti();
-    $compagnia2->costiProgressivi();
+$company2 = new Company ('Aulab Startup', 'Inghilterra', 0);
+    $company2->printEmployees();
+    $company2->progressiveCosts();
 
-$compagnia3 = new Azienda ('Apple', 'Instanbul', 5560);
-    $compagnia3->stampaDipendenti();
-    $compagnia3->costiProgressivi();
+$company3 = new Company ('Apple', 'Instanbul', 5560);
+    $company3->printEmployees();
+    $company3->progressiveCosts();
 
-$compagnia4 = new Azienda ('Oracle', 'Stati Uniti', 100000);
-    $compagnia4->stampaDipendenti();
-    $compagnia4->costiProgressivi();
+$company4 = new Company ('Oracle', 'Stati Uniti', 100000);
+    $company4->printEmployees();
+    $company4->progressiveCosts();
 
-$compagnia5 = new Azienda ('Tim', 'Spagna', 19577);
-    $compagnia5->stampaDipendenti();
-    $compagnia5->costiProgressivi();
+$company5 = new Company ('Tim', 'Spagna', 19577);
+    $company5->printEmployees();
+    $company5->progressiveCosts();
 
-$compagnia6 = new Azienda ('Vanhool', 'Danimarca', 7500);
-    $compagnia6->stampaDipendenti();
-    $compagnia6->costiProgressivi();
+$company6 = new Company ('Vanhool', 'Danimarca', 7500);
+    $company6->printEmployees();
+    $company6->progressiveCosts();
 
-Azienda::stampatotaleFinale();
+Company::printFinaltotal();
 
 
 
